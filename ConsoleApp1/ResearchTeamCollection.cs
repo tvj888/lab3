@@ -8,6 +8,8 @@ namespace ConsoleApp1
 
     public class ResearchTeamCollection<TKey>
     {
+        KeySelector<TKey> myKeySelector;//
+
         //закрытое поле типа System.Collections.Generic.Dictionary<TKey, ResearchTeam>;
 
         private Dictionary<TKey, ResearchTeam> researchteamDictionary;
@@ -20,6 +22,7 @@ namespace ConsoleApp1
 
         public ResearchTeamCollection(KeySelector<TKey> tKey)
         {
+
             this.myKeySelector = tKey;
             researchteamDictionary = new Dictionary<TKey, ResearchTeam>();
 
@@ -40,11 +43,11 @@ namespace ConsoleApp1
         //ВОТ ТУТ ПОШЛО ЕБАЛОВО
 
 
-        public void AddResearchTeams(params ResearchTeam[] researchTeams)
+        public void AddResearchTeams(params ResearchTeam[] researchTeams[])
         {
             ResearchTeam tempRT = new ResearchTeam();
             TKey key = myKeySelector(tempRT);
-            researchteamDictionary.Add(TKey, researchTeams);
+            researchteamDictionary.Add(key, researchTeams[10]);
         }
 
         //НА САМОМ ДЕЛЕ ВОТ ТУТ
